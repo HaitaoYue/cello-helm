@@ -1,0 +1,12 @@
+apiVersion: v1
+entries:
+  cello:
+  - apiVersion: v1
+    created: 2018-06-30T10:53:29.732153+08:00
+    description: A Helm chart for Kubernetes
+    digest: 73ff91f4f33c7f4b0effd3bcf3c2190368b6f645c64deb2736d987a505cb5726
+    name: cello
+    urls:
+    - https://haitaoyue.github.io/cello-helm/cello-0.1.0.tgz
+    version: 0.1.0
+generated: 2018-06-30T10:53:29.730176+08:00
