@@ -21,8 +21,8 @@ spec:
         volumeMounts:
         - name: operator-nfs
           mountPath: "/opt/data"
-        command: ["cp"]
-        args: ["-r", "/app/agent/docker/_compose_files/*", "/opt/data/"]
+        command: ["rsync"]
+        args: ["-av", "--delete", "/app/agent/docker/_compose_files/", "/opt/data/"]
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
