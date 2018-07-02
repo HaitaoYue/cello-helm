@@ -29,7 +29,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: SHARED_DIRECTORY
-              value: /cello
+              value: "/cello"
           volumeMounts:
           - name: operator-nfs
             mountPath: "/cello"
