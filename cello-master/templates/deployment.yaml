@@ -41,7 +41,7 @@ spec:
               containerPort: 111
               protocol: UDP
           args:
-            - "-provisioner={{ template "nfs-provisioner.provisionerName" . }}
+            - "-provisioner={{ template "nfs-provisioner.provisionerName" . }}"
           volumeMounts:
           - name: operator-nfs
             mountPath: "/export"
