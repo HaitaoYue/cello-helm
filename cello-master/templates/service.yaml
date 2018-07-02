@@ -14,10 +14,34 @@ spec:
       targetPort: {{ .Values.service.internalPort }}
       protocol: TCP
       name: {{ .Values.service.name }}
-    - name: "{{ .Chart.Name }}-nfs-port"
-      port: 2049
-      targetPort: 2049
+    - port: {{ .Values.nfs.nfsPort }}
+      targetPort: nfs
       protocol: TCP
+      name: nfs
+{{- if (and (eq .Values.service.type "NodePort") (not (empty .Values.nfs.nfsNodePort))) }}
+      nodePort: {{ .Values.nfs.nfsNodePort }}
+{{- end }}
+    - port: {{ .Values.nfs.mountdPort }}
+      targetPort: mountd
+      protocol: TCP
+      name: mountd
+{{- if (and (eq .Values.service.type "NodePort") (not (empty .Values.nfs.mountdNodePort))) }}
+      nodePort: {{ .Values.nfs.mountdNodePort }}
+{{- end }}
+    - port: {{ .Values.nfs.rpcbindPort }}
+      targetPort: rpcbind-tcp
+      protocol: TCP
+      name: rpcbind-tcp
+{{- if (and (eq .Values.service.type "NodePort") (not (empty .Values.nfs.rpcbindNodePort))) }}
+      nodePort: {{ .Values.nfs.rpcbindNodePort }}
+{{- end }}
+    - port: {{ .Values.nfs.rpcbindPort }}
+      targetPort: rpcbind-udp
+      protocol: UDP
+      name: rpcbind-udp
+{{- if (and (eq .Values.service.type "NodePort") (not (empty .Values.nfs.rpcbindNodePort))) }}
+      nodePort: {{ .Values.nfs.rpcbindNodePort }}
+{{- end }}
   selector:
     app: {{ template "cello-master.name" . }}
     release: {{ .Release.Name }}

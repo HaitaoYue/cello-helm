@@ -33,6 +33,14 @@ image:
 
 nfs:
   storePath: /opt/cello
+  nfsPort: 2049
+  mountdPort: 20048
+  rpcbindPort: 51413
+  # nfsNodePort:
+  # mountdNodePort:
+  # rpcbindNodePort:
+  mountdPort: 20048
+  rpcbindPort: 51413
 
 service:
   name: nginx
