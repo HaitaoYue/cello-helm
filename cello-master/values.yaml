@@ -45,10 +45,8 @@ nfs:
   storageClass: "-"
 
 service:
-  name: nginx
-  type: ClusterIP
-  externalPort: 80
-  internalPort: 80
+  type: NodePort
+
 ingress:
   enabled: false
   # Used to create an Ingress record.
