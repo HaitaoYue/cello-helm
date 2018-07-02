@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ template "cello-master.mongo.pvName" . }}
+  name: "{{ template "cello-master.fullname" . }}-mongo"
 spec:
   accessModes:
     - ReadWriteMany

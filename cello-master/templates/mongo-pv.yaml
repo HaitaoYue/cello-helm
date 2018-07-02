@@ -2,7 +2,7 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: {{ template "cello-master.mongo.pvName" . }}
+  name: "{{ template "cello-master.fullname" . }}-mongo"
   labels:
     type: local
 spec:

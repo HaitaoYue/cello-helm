@@ -25,12 +25,3 @@ Create chart name and version as used by the chart label.
 cluster.local/{{ template "nfs-provisioner.fullname" . -}}
 {{- end -}}
 {{- end -}}
-
-{{/*
-Create a default fully qualified app name.
-We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
-*/}}
-{{- define "cello-master.mongo.pvName" -}}
-{{- $name := randAlphaNum 10 | quote -}}
-{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
