@@ -32,7 +32,7 @@ image:
   pullPolicy: IfNotPresent
 
 nfs:
-  storePath: /opt/cello
+  storePath: "/opt/cello/config"
   nfsPort: 2049
   mountdPort: 20048
   rpcbindPort: 51413
@@ -68,7 +68,8 @@ persistence:
 
 mongo:
   storeEnabled: false
-  # storePath: ""
+  size: 10Gi
+  storePath: "/opt/cello/mongo"
 
 operator:
   debug: "False"
