@@ -87,12 +87,8 @@ spec:
               value: "True"
       volumes:
       - name: operator-nfs
-        {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
-          claimName: {{ .Values.persistence.existingClaim | default (include "cello-master.fullname" .) }}
-        {{- else }}
-        emptyDir: {}
-        {{- end }}
+          claimName: "{{ template "cello-master.fullname" . }}-nfs"
       - name: operator-mongo
         persistentVolumeClaim:
           claimName: "{{ template "cello-master.fullname" . }}-mongo"
