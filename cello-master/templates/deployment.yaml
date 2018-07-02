@@ -48,6 +48,9 @@ spec:
         - name: "{{ .Chart.Name }}-mongo"
           image: "{{ .Values.mongoImage.repository }}:{{ .Values.mongoImage.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+          - name: operator-mongo
+            mountPath: "/data/db"
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
