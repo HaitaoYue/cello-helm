@@ -19,8 +19,8 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 Create chart name and version as used by the chart label.
 */}}
 {{- define "nfs-provisioner.provisionerName" -}}
-{{- if .Values.storageClass.provisionerName -}}
-{{- printf .Values.storageClass.provisionerName -}}
+{{- if .Values.persistent.storageClass -}}
+{{- printf .Values.persistent.storageClass -}}
 {{- else -}}
 cluster.local/{{ template "nfs-provisioner.fullname" . -}}
 {{- end -}}
