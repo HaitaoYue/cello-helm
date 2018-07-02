@@ -40,6 +40,8 @@ spec:
             - name: rpcbind-udp
               containerPort: 111
               protocol: UDP
+          args:
+            - "-provisioner={{ template "nfs-provisioner.provisionerName" . }}
           volumeMounts:
           - name: operator-nfs
             mountPath: "/export"
