@@ -45,6 +45,9 @@ spec:
           volumeMounts:
           - name: operator-nfs
             mountPath: "/export"
+        - name: "{{ .Chart.Name }}-mongo"
+          image: "{{ .Values.mongoImage.repository }}:{{ .Values.mongoImage.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
@@ -66,5 +69,9 @@ spec:
     {{- end }}
       volumes:
       - name: operator-nfs
-        hostPath:
-          path: {{ .Values.nfs.storePath }}
+        {{- if .Values.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ .Values.persistence.existingClaim | default (include "minio.fullname" .) }}
+        {{- else }}
+        emptyDir: {}
+        {{- end }}

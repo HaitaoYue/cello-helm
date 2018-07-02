@@ -61,7 +61,8 @@ ingress:
     #   hosts:
     #     - chart-example.local
 
-persistent:
+persistence:
+  enabled: true
   volumeName: 'cello-nfs-volume'
   storageClass: '-'
 
