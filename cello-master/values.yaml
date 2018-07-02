@@ -23,8 +23,8 @@ mongoImage:
   tag: 3.4.10
   pullPolicy: IfNotPresent
 nfsImage:
-  repository: itsthenetwork/nfs-server-alpine
-  tag: 9
+  repository: quay.io/kubernetes_incubator/nfs-provisioner
+  tag: v1.0.9
   pullPolicy: IfNotPresent
 image:
   repository: nginx

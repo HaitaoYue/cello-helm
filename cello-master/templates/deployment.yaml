@@ -27,12 +27,22 @@ spec:
         - name: "{{ .Chart.Name }}-nfs"
           image: "{{ .Values.nfsImage.repository }}:{{ .Values.nfsImage.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: SHARED_DIRECTORY
-              value: "/cello"
+          ports:
+            - name: nfs
+              containerPort: 2049
+              protocol: TCP
+            - name: mountd
+              containerPort: 20048
+              protocol: TCP
+            - name: rpcbind-tcp
+              containerPort: 111
+              protocol: TCP
+            - name: rpcbind-udp
+              containerPort: 111
+              protocol: UDP
           volumeMounts:
           - name: operator-nfs
-            mountPath: "/cello"
+            mountPath: "/export"
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
