@@ -1,4 +1,7 @@
 1. Get the application URL by running these commands:
+{{- if contains "NodePort" .Values.service.type }}
+export OPERATOR_PORT=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ template "cello-master.fullname" . }} -o jsonpath="{.spec.ports[1].nodePort}")
+{{- end }}
 {{- if .Values.ingress.enabled }}
 {{- range .Values.ingress.hosts }}
   http://{{ . }}
