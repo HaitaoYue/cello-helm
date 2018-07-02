@@ -2,9 +2,9 @@ apiVersion: v1
 entries:
   cello-master:
   - apiVersion: v1
-    created: 2018-07-02T13:55:25.151353+08:00
+    created: 2018-07-02T14:08:11.749113+08:00
     description: Cello is a Block As a service in hyperledger.
-    digest: 5f82846ab003e2ac4c23cbcffc603b1b0c601d5d25263711fad0b13e9ebd0e7b
+    digest: 8848bd5235838a525b7e994289ac23dca5d28c4dd72c5afcd53af24498d57f50
     home: https://www.hyperledger.org/projects/cello
     icon: https://wiki.hyperledger.org/_media/projects/hyperledger_cello_logo_color.png
     keywords:
@@ -26,11 +26,11 @@ entries:
     version: 0.1.0
   master-server:
   - apiVersion: v1
-    created: 2018-07-02T13:55:25.153003+08:00
+    created: 2018-07-02T14:08:11.751357+08:00
     description: A Helm chart for Kubernetes
     digest: 903b8432ed627f39274ab5d3edc60233db49735cb5458ee6b9a27b99fd53168f
     name: master-server
     urls:
     - https://haitaoyue.github.io/cello-helm/master-server-0.1.0.tgz
     version: 0.1.0
-generated: 2018-07-02T13:55:25.15014+08:00
+generated: 2018-07-02T14:08:11.74839+08:00

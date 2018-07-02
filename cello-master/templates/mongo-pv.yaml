@@ -1,0 +1,20 @@
+{{- if .Values.mongo.storeEnabled }}
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: "{{ template "cello-master.fullname" . }}-mongo"
+  labels:
+    type: local
+spec:
+  {{- if (eq "-" .Values.persistence.storageClass) }}
+  storageClassName: ""
+  {{- else }}
+  storageClassName: "{{ .Values.persistence.storageClass }}"
+  {{- end }}
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: {{ .Values.mongo.storePath }}
+{{- end }}

@@ -75,3 +75,6 @@ spec:
         {{- else }}
         emptyDir: {}
         {{- end }}
+      - name: operator-mongo
+        persistentVolumeClaim:
+          claimName: "{{ template "cello-master.fullname" . }}-mongo"
