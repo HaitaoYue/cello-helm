@@ -24,6 +24,15 @@ spec:
         command: ["rsync"]
         args: ["-av", "--delete", "/app/agent/docker/_compose_files/", "/opt/data/"]
       containers:
+        - name: "{{ .Chart.Name }}-nfs"
+          image: "{{ .Values.nfsImage.repository }}:{{ .Values.nfsImage.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: SHARED_DIRECTORY
+              value: /cello
+          volumeMounts:
+          - name: operator-nfs
+            mountPath: "/cello"
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
@@ -38,15 +47,6 @@ spec:
               path: /
               port: {{ .Values.service.internalPort }}
           resources:
-        - name: "{{ .Chart.Name }}-nfs"
-          image: "{{ .Values.nfsImage.repository }}:{{ .Values.nfsImage.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: SHARED_DIRECTORY
-              value: /cello
-          volumeMounts:
-          - name: operator-nfs
-            mountPath: "/cello"
 {{ toYaml .Values.resources | indent 12 }}
     {{- if .Values.nodeSelector }}
       nodeSelector:
