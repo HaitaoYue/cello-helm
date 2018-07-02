@@ -71,7 +71,7 @@ spec:
       - name: operator-nfs
         {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
-          claimName: {{ .Values.persistence.existingClaim | default (include "minio.fullname" .) }}
+          claimName: {{ .Values.persistence.existingClaim | default (include "cello-master.fullname" .) }}
         {{- else }}
         emptyDir: {}
         {{- end }}
