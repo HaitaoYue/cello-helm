@@ -2,3 +2,7 @@
 {{- if contains "NodePort" .Values.service.type }}
 export OPERATOR_PORT=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ template "cello-master.fullname" . }} -o jsonpath="{.spec.ports[1].nodePort}")
 {{- end }}
+
+2. Local storage paths:
+mongo: {{ .Values.mongo.storePath }}
+nfs: {{ .Values.nfs.storePath }}
