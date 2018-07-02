@@ -4,7 +4,7 @@ metadata:
   name: "{{ template "cello-master.fullname" . }}-mongo"
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   {{- if (eq "-" .Values.persistence.storageClass) }}
   storageClassName: ""
   {{- else }}

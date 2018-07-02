@@ -13,6 +13,6 @@ spec:
   capacity:
     storage: {{ .Values.mongo.size }}
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   hostPath:
     path: {{ .Values.mongo.storePath }}
