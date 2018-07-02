@@ -3,10 +3,10 @@ apiVersion: v1
 metadata:
   name: "{{ template "cello-master.fullname" . }}-nfs"
 spec:
-  {{- if (eq "-" .Values.persistence.storageClass) }}
+  {{- if (eq "-" .Values.nfs.storageClass) }}
   storageClassName: ""
   {{- else }}
-  storageClassName: "{{ .Values.persistence.storageClass }}"
+  storageClassName: "{{ .Values.nfs.storageClass }}"
   {{- end }}
   accessModes:
     - ReadWriteOnce

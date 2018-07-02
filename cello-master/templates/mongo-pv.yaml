@@ -5,10 +5,10 @@ metadata:
   labels:
     type: local
 spec:
-  {{- if (eq "-" .Values.persistence.storageClass) }}
+  {{- if (eq "-" .Values.mongo.storageClass) }}
   storageClassName: ""
   {{- else }}
-  storageClassName: "{{ .Values.persistence.storageClass }}"
+  storageClassName: "{{ .Values.mongo.storageClass }}"
   {{- end }}
   capacity:
     storage: {{ .Values.mongo.size }}
