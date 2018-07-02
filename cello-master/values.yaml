@@ -33,6 +33,7 @@ image:
 
 nfs:
   storePath: /opt/cello
+  nodePort: 2049
 
 service:
   name: nginx
