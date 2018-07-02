@@ -71,10 +71,10 @@ spec:
           env:
             - name: MONGO_URL
               value: "mongodb://127.0.0.1:27017"
-            - name: MONGO_HOST
+            - name: MONGODB_HOST
               value: "127.0.0.1"
-            - name: MONGO_DB
-              value: "dev"
+            - name: MONGODB_DB
+              value: "dashboard"
             - name: MONGODB_PORT
               value: "27017"
             - name: DEBUG
