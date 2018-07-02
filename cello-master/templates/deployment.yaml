@@ -85,6 +85,26 @@ spec:
               value: "templates"
             - name: ENABLE_EMAIL_ACTIVE
               value: "True"
+        - name: "{{ .Chart.Name }}-user-dashboard"
+          image: "{{ .Values.userDashboardImage.repository }}:{{ .Values.userDashboardImage.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: RESTFUL_SERVER
+              value: "127.0.0.1:8080"
+            - name: ENABLE_EMAIL_ACTIVE
+              value: "{{ .Values.userDashboard.enableEmailActive }}"
+            - name: MONGO_HOST
+              value: "127.0.0.1"
+            - name: MONGO_PORT
+              value: "27017"
+            - name: MONGO_DB
+              value: "user_dashboard"
+            - name: WEBROOT
+              value: "{{ .Values.userDashboard.webRoot }}"
+            - name: FABRIC_CFG_PATH
+              value: "/etc/hyperledger/fabric"
       volumes:
       - name: operator-nfs
         persistentVolumeClaim:
