@@ -65,6 +65,26 @@ spec:
               value: "27017"
             - name: DEBUG
               value: "False"
+        - name: "{{ .Chart.Name }}-operator"
+          image: "{{ .Values.operatorDashboardImage.repository }}:{{ .Values.operatorDashboardImage.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: MONGO_URL
+              value: "mongodb://127.0.0.1:27017"
+            - name: MONGO_HOST
+              value: "127.0.0.1"
+            - name: MONGO_DB
+              value: "dev"
+            - name: MONGODB_PORT
+              value: "27017"
+            - name: DEBUG
+              value: "False"
+            - name: STATIC_FOLDER
+              value: "static"
+            - name: TEMPLATE_FOLDER
+              value: "templates"
+            - name: ENABLE_EMAIL_ACTIVE
+              value: "True"
       volumes:
       - name: operator-nfs
         {{- if .Values.persistence.enabled }}
