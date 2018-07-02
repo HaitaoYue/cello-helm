@@ -17,7 +17,6 @@ spec:
     - name: "{{ .Chart.Name }}-nfs-port"
       port: 2049
       targetPort: 2049
-      nodePort: {{ .Values.nfs.nodePort }}
   selector:
     app: {{ template "cello-master.name" . }}
     release: {{ .Release.Name }}
