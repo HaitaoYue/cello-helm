@@ -1,15 +1,10 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: "{{ template "cello-master.fullname" . }}-mongo"
+  name: {{ template "cello-master.mongo.pvName" . }}
 spec:
-  {{- if (eq "-" .Values.persistence.storageClass) }}
-  storageClassName: ""
-  {{- else }}
-  storageClassName: "{{ .Values.persistence.storageClass }}"
-  {{- end }}
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 5Gi
+      storage: {{ .Values.mongo.size }}

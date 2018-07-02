@@ -2,7 +2,7 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: "{{ template "cello-master.fullname" . }}-mongo"
+  name: {{ template "cello-master.mongo.pvName" . }}
   labels:
     type: local
 spec:
@@ -12,9 +12,9 @@ spec:
   storageClassName: "{{ .Values.persistence.storageClass }}"
   {{- end }}
   capacity:
-    storage: 10Gi
+    storage: {{ .Values.mongo.size }}
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   hostPath:
     path: {{ .Values.mongo.storePath }}
 {{- end }}
