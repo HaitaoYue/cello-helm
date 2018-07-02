@@ -5,11 +5,11 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
+  {{- if (eq "-" .Values.persistence.storageClass) }}
+  storageClassName: ""
+  {{- else }}
+  storageClassName: "{{ .Values.persistence.storageClass }}"
+  {{- end }}
   resources:
     requests:
       storage: {{ .Values.mongo.size }}
-      {{- if (eq "-" .Values.persistence.storageClass) }}
-      storageClassName: ""
-      {{- else }}
-      storageClassName: "{{ .Values.persistence.storageClass }}"
-      {{- end }}

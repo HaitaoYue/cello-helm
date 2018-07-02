@@ -33,6 +33,7 @@ image:
 
 nfs:
   storePath: "/opt/cello/config"
+  size: 10Gi
   nfsPort: 2049
   mountdPort: 20048
   rpcbindPort: 51413

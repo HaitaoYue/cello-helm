@@ -1,7 +1,7 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: {{ template "cello-master.fullname" . }}
+  name: "{{ template "cello-master.fullname" . }}-nfs"
   labels:
     type: local
 spec:
@@ -11,7 +11,7 @@ spec:
   storageClassName: "{{ .Values.persistence.storageClass }}"
   {{- end }}
   capacity:
-    storage: 10Gi
+    storage: {{ .Values.nfs.size }}
   accessModes:
     - ReadWriteOnce
   hostPath:
