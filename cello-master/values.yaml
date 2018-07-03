@@ -66,6 +66,9 @@ operator:
 userDashboard:
   enableEmailActive: "False"
   webRoot: "/"
+  storePath: "/opt/cello/baas"
+  storageClass: "-"
+  size: 10Gi
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

@@ -1,0 +1,15 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: "{{ template "cello-master.fullname" . }}-user-dashboard"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  {{- if (eq "-" .Values.userDashboard.storageClass) }}
+  storageClassName: ""
+  {{- else }}
+  storageClassName: "{{ .Values.userDashboard.storageClass }}"
+  {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.userDashboard.size }}

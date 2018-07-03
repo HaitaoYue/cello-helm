@@ -105,6 +105,9 @@ spec:
               value: "{{ .Values.userDashboard.webRoot }}"
             - name: FABRIC_CFG_PATH
               value: "/etc/hyperledger/fabric"
+          volumeMounts:
+          - name: user-dashboard
+            mountPath: "/opt/data"
       volumes:
       - name: operator-nfs
         persistentVolumeClaim:
@@ -112,3 +115,6 @@ spec:
       - name: operator-mongo
         persistentVolumeClaim:
           claimName: "{{ template "cello-master.fullname" . }}-mongo"
+      - name: user-dashboard
+        persistentVolumeClaim:
+          claimName: "{{ template "cello-master.fullname" . }}-user-dashboard"
