@@ -74,7 +74,12 @@ userDashboard:
     port: 27017
     database: user_dashboard
 
-autoStorageClass: false
+autoStorageClass: true
+
+minio:
+  persistence:
+    storePath: "/opt/cello/minio"
+    storageClass: "cello-minio"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
