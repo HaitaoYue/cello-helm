@@ -69,6 +69,10 @@ userDashboard:
   storePath: "/opt/cello/baas"
   storageClass: "-"
   size: 10Gi
+  mongo:
+    host: 127.0.0.1
+    port: 27017
+    database: user_dashboard
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

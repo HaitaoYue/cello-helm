@@ -96,11 +96,11 @@ spec:
             - name: ENABLE_EMAIL_ACTIVE
               value: "{{ .Values.userDashboard.enableEmailActive }}"
             - name: MONGO_HOST
-              value: "127.0.0.1"
+              value: {{ .Values.userDashboard.mongo.host }}
             - name: MONGO_PORT
-              value: "27017"
+              value: {{ .Values.userDashboard.mongo.port }}
             - name: MONGO_DB
-              value: "user_dashboard"
+              value: {{ .Values.userDashboard.mongo.database }}
             - name: WEBROOT
               value: "{{ .Values.userDashboard.webRoot }}"
             - name: FABRIC_CFG_PATH
