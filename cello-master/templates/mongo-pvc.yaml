@@ -5,10 +5,14 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  {{- if .Values.autoStorageClass }}
+  storageClassName: "{{ template "cello-master.fullname" . }}-mongo"
+  {{- else }}
   {{- if (eq "-" .Values.mongo.storageClass) }}
   storageClassName: ""
   {{- else }}
   storageClassName: "{{ .Values.mongo.storageClass }}"
+  {{- end }}
   {{- end }}
   resources:
     requests:

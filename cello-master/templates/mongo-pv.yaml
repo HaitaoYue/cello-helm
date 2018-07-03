@@ -5,10 +5,14 @@ metadata:
   labels:
     type: local
 spec:
+  {{- if .Values.autoStorageClass }}
+  storageClassName: "{{ template "cello-master.fullname" . }}-mongo"
+  {{- else }}
   {{- if (eq "-" .Values.mongo.storageClass) }}
   storageClassName: ""
   {{- else }}
   storageClassName: "{{ .Values.mongo.storageClass }}"
+  {{- end }}
   {{- end }}
   capacity:
     storage: {{ .Values.mongo.size }}
