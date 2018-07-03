@@ -1,0 +1,15 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: "{{ template "cello-master.fullname" . }}-minio"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  {{- if (eq "-" .Values.minio.persistence.storageClass) }}
+  storageClassName: ""
+  {{- else }}
+  storageClassName: "{{ .Values.minio.persistence.storageClass }}"
+  {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.minio.persistence.size }}
