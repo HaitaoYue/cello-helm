@@ -24,27 +24,27 @@ spec:
         command: ["rsync"]
         args: ["-av", "--delete", "/app/agent/docker/_compose_files/", "/opt/data/"]
       containers:
-        - name: "{{ .Chart.Name }}-nfs"
-          image: "{{ .Values.nfsImage.repository }}:{{ .Values.nfsImage.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: nfs
-              containerPort: 2049
-              protocol: TCP
-            - name: mountd
-              containerPort: 20048
-              protocol: TCP
-            - name: rpcbind-tcp
-              containerPort: 111
-              protocol: TCP
-            - name: rpcbind-udp
-              containerPort: 111
-              protocol: UDP
-          args:
-            - "-provisioner={{ template "nfs-provisioner.provisionerName" . }}"
-          volumeMounts:
-          - name: operator-nfs
-            mountPath: "/export"
+#        - name: "{{ .Chart.Name }}-nfs"
+#          image: "{{ .Values.nfsImage.repository }}:{{ .Values.nfsImage.tag }}"
+#          imagePullPolicy: {{ .Values.image.pullPolicy }}
+#          ports:
+#            - name: nfs
+#              containerPort: 2049
+#              protocol: TCP
+#            - name: mountd
+#              containerPort: 20048
+#              protocol: TCP
+#            - name: rpcbind-tcp
+#              containerPort: 111
+#              protocol: TCP
+#            - name: rpcbind-udp
+#              containerPort: 111
+#              protocol: UDP
+#          args:
+#            - "-provisioner={{ template "nfs-provisioner.provisionerName" . }}"
+#          volumeMounts:
+#          - name: operator-nfs
+#            mountPath: "/export"
         - name: "{{ .Chart.Name }}-mongo"
           image: "{{ .Values.mongoImage.repository }}:{{ .Values.mongoImage.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
