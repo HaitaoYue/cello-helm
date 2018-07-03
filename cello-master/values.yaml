@@ -5,30 +5,23 @@ replicaCount: 1
 operatorDashboardImage:
   repository: hyperledger/cello-operator-dashboard
   tag: latest
-  pullPolicy: IfNotPresent
 userDashboardImage:
   repository: hyperledger/cello-user-dashboard
   tag: latest
-  pullPolicy: IfNotPresent
 engineImage:
   repository: hyperledger/cello-engine
   tag: latest
-  pullPolicy: IfNotPresent
 watchDogImage:
   repository: hyperledger/cello-watchdog
   tag: latest
-  pullPolicy: IfNotPresent
 mongoImage:
   repository: mongo
   tag: 3.4.10
-  pullPolicy: IfNotPresent
 nfsImage:
   repository: quay.io/kubernetes_incubator/nfs-provisioner
   tag: v1.0.9
-  pullPolicy: IfNotPresent
+
 image:
-  repository: nginx
-  tag: stable
   pullPolicy: IfNotPresent
 
 nfs:
